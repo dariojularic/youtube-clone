@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "../api";
 import VideoCard from "./components/VideoCard";
+import "./NewVideos.css"
 
 function NewVideos() {
   const baseUrl =
@@ -26,7 +27,7 @@ function NewVideos() {
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div>
+    <div className="video-grid">
       {data?.items.map((video) => {
         console.log(video.snippet);
         return (
