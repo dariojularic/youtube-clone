@@ -1,7 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchData } from "../api";
 import VideoCard from "./components/VideoCard";
-import "./NewVideos.css"
+import Sidebar from "../layouts/sidebar/Sidebar";
+import "./NewVideos.css";
 
 function NewVideos() {
   const baseUrl =
@@ -27,19 +28,24 @@ function NewVideos() {
   if (isLoading) return <h1>Loading...</h1>;
 
   return (
-    <div className="video-grid">
-      {data?.items.map((video) => {
-        console.log(video.snippet);
-        return (
-          <VideoCard
-            key={video.id.videoId}
-            title={video.snippet.title}
-            publishedAt={video.snippet.publishedAt}
-            channelTitle={video.snippet.channelTitle}
-            thumbnails={video.snippet.thumbnails}
-          />
-        );
-      })}
+    <div className="home-container">
+      <div className="sidebar-container">
+        <Sidebar />
+      </div>
+      <div className="video-grid">
+        {data?.items.map((video) => {
+          // console.log(video.snippet);
+          return (
+            <VideoCard
+              key={video.id.videoId}
+              title={video.snippet.title}
+              publishedAt={video.snippet.publishedAt}
+              channelTitle={video.snippet.channelTitle}
+              thumbnails={video.snippet.thumbnails}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }

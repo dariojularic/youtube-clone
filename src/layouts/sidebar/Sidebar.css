@@ -1,0 +1,19 @@
+aside {
+  width: 240px;
+}
+
+.category-icon {
+  height: 30px;
+
+}
+
+.category-paragraph {
+  color: white;
+  font-size: 20px;
+}
+
+.single-category {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
