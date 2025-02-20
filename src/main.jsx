@@ -4,14 +4,19 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import SharedLayout from "./layouts/SharedLayout.jsx";
-import NewVideos from "./videos/NewVideos.jsx";
+import NewVideos from "./pages/newvideos/NewVideos.jsx";
+import Loader from "./layouts/loader/Loader.jsx";
+import VideoId from "./pages/videoId/VideoId.jsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     errorElement: <div>404 Not Found</div>,
-    children: [{ path: "/", element: <NewVideos /> }],
+    children: [
+      { path: "/", element: <NewVideos /> },
+      { path: "/video/:id", element: <VideoId /> },
+    ],
   },
 ]);
 

@@ -5,8 +5,8 @@ function Sidebar() {
   return (
     <aside>
       {categories.map((category) => {
-        console.log("icon", category.icon);
-        console.log("category", category.category);
+        // console.log("icon", category.icon);
+        // console.log("category", category.category);
         return (
           <div key={category.id} className="single-category">
             <img src={`/src/assets/${category.icon}`} alt="" className="category-icon"  />

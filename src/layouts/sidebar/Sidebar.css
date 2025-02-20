@@ -1,5 +1,6 @@
 aside {
   width: 240px;
+  /* padding-left: 12px; */
 }
 
 .category-icon {
@@ -10,10 +11,18 @@ aside {
 .category-paragraph {
   color: white;
   font-size: 20px;
+  margin: 16px 0;
 }
 
 .single-category {
   display: flex;
   align-items: center;
   gap: 16px;
+  width: 90%;
+  padding-left: 12px;
+  border-radius: 99px;
+}
+
+.single-category:hover {
+  background-color: rgb(63, 63, 63);
 }
