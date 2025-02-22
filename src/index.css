@@ -1,5 +1,10 @@
 body {
   background-color: black;
   padding-top: 64px;
-  /* height: 91vh; */
+  height: 91vh;
+  margin: 0;
+}
+
+#root {
+  height: 100%;
 }
