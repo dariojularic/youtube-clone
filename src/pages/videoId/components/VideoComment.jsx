@@ -11,7 +11,7 @@ function VideoComment({
   return (
     <article className="comment-container">
       <div className="comment-img-container">
-        <img src={authorProfileImageUrl} alt="author profile image" />
+        <img src={authorProfileImageUrl} alt="" />
       </div>
 
       <div className="comment-text-container">

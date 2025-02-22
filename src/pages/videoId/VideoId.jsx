@@ -1,5 +1,5 @@
 import "./VideoId.css";
-import { fetchVideoComments, fetchSingleVideo, options } from "../../api";
+import { fetchVideoComments, fetchSingleVideo, options, fetchChannelVideos } from "../../api";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../layouts/loader/Loader";
@@ -23,15 +23,29 @@ function VideoId() {
     queryFn: () => fetchVideoComments(params.id, options),
   });
 
-  
+
+  // const {
+  //   data: channelVideosData,
+  //   error: channelVideosError,
+  //   isLoading: channelVideosIsLoading,
+  // } = useQuery({
+  //   queryKey: ["channel"],
+  //   queryFn: () => fetchChannelVideos(params.id, options),
+  // });
+
 
   if (error) console.error(error);
 
+  if (commentsError) console.error(error)
+
   if (isLoading) return <Loader />;
 
-  // console.log("commentsData", commentsData)
+  if (commentsIsLoading) return <Loader />;
+
+
 
   const videoInfo = data.items[0].snippet;
+  console.log("commentsData", videoInfo)
   const videoStatistics = data.items[0].statistics;
   // console.log(data.items[0]);
   // console.log("snippet", data.items[0].snippet);
@@ -55,6 +69,7 @@ function VideoId() {
 
           <div className="video-details">
             <p className="video-views">{videoStatistics.viewCount} views</p>
+            <p className="video-views">{videoInfo.channelTitle}</p>
 
             <div className="video-likes">
               <button className="like-btn">{videoStatistics.likeCount}</button>
@@ -67,6 +82,7 @@ function VideoId() {
 
         <div className="video-comments">
           {commentsData.items.map((comment) => {
+            // console.log(commentData)
             // console.log(
             //   "comment.snippet.topLevelComment.snippet",
             //   comment.snippet.topLevelComment.snippet
