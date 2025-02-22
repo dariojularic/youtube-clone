@@ -1,9 +1,22 @@
 import "./VideoId.css";
-import { fetchVideoComments, fetchSingleVideo, options, fetchChannelVideos } from "../../api";
+import {
+  fetchVideoComments,
+  fetchSingleVideo,
+  options,
+  fetchChannelVideos,
+} from "../../api";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../layouts/loader/Loader";
 import VideoComment from "./components/VideoComment";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faThumbsUp,
+  faThumbsDown,
+  faShareFromSquare,
+  faCircleDown,
+} from "@fortawesome/free-regular-svg-icons";
+// import { faArrowRight } from "@fortawesome/free-regular-svg-icons";
 
 function VideoId() {
   const params = useParams();
@@ -23,7 +36,6 @@ function VideoId() {
     queryFn: () => fetchVideoComments(params.id, options),
   });
 
-
   // const {
   //   data: channelVideosData,
   //   error: channelVideosError,
@@ -33,19 +45,16 @@ function VideoId() {
   //   queryFn: () => fetchChannelVideos(params.id, options),
   // });
 
-
   if (error) console.error(error);
 
-  if (commentsError) console.error(error)
+  if (commentsError) console.error(error);
 
   if (isLoading) return <Loader />;
 
   if (commentsIsLoading) return <Loader />;
 
-
-
   const videoInfo = data.items[0].snippet;
-  console.log("commentsData", videoInfo)
+  // console.log("commentsData", videoInfo);
   const videoStatistics = data.items[0].statistics;
   // console.log(data.items[0]);
   // console.log("snippet", data.items[0].snippet);
@@ -65,17 +74,30 @@ function VideoId() {
         </div>
 
         <div className="video-info">
-          <h4>{videoInfo.title}</h4>
+          <div className="title-channel-container">
+            <h4>{videoInfo.title}</h4>
+            <p className="channel-title">{videoInfo.channelTitle}</p>
+          </div>
 
           <div className="video-details">
             <p className="video-views">{videoStatistics.viewCount} views</p>
-            <p className="video-views">{videoInfo.channelTitle}</p>
 
             <div className="video-likes">
-              <button className="like-btn">{videoStatistics.likeCount}</button>
-              <button className="dislike-btn">thumb down</button>
-              <button className="share-btn">SHARE</button>
-              <button className="download-btn">Download</button>
+              <button className="like-btn">
+                {videoStatistics.likeCount}
+                <FontAwesomeIcon icon={faThumbsUp} />
+              </button>
+              <button className="dislike-btn">
+                <FontAwesomeIcon icon={faThumbsDown} />
+              </button>
+              <button className="share-btn">
+                <FontAwesomeIcon icon={faShareFromSquare} />
+                SHARE
+              </button>
+              <button className="download-btn">
+                <FontAwesomeIcon icon={faCircleDown} />
+                Download
+              </button>
             </div>
           </div>
         </div>

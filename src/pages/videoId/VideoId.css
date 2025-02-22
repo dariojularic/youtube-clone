@@ -1,11 +1,25 @@
 .video-id-container {
   color: white;
-  width: 100%;
+  width: 90%;
   height: 100%;
+  display: grid;
+  grid-template-columns: 960px 1fr;
+  gap: 24px;
+  margin: auto;
   /* height: fit-content; */
 }
 
 .display-video-container {
   /* height: 480px;
   width: 640px; */
+}
+
+.video-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-channel-container {
+  display: flex;
+  justify-content: space-between;
 }
