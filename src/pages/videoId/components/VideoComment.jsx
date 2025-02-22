@@ -1,23 +1,26 @@
 import "./VideoComment.css";
+import { formatDistanceToNow } from "date-fns";
 
 function VideoComment({
   authorDisplayName,
   updatedAt,
   publishedAt,
   authorProfileImageUrl,
-  textOriginal
+  textOriginal,
 }) {
   return (
-    <article>
+    <article className="comment-container">
       <div className="comment-img-container">
-        <img src={authorProfileImageUrl} alt="" />
+        <img src={authorProfileImageUrl} alt="author profile image" />
       </div>
 
       <div className="comment-text-container">
-        <h5>
-          {authorDisplayName}
-          <span>{publishedAt}</span>
-        </h5>
+        <div className="comment-author-date">
+          <h5 className="comment-author-name">{authorDisplayName}</h5>
+          <p className="comment-date">
+            {formatDistanceToNow(publishedAt, { addSuffix: true })}
+          </p>
+        </div>
         <p className="comment-content">{textOriginal}</p>
       </div>
     </article>

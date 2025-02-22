@@ -23,6 +23,8 @@ function VideoId() {
     queryFn: () => fetchVideoComments(params.id, options),
   });
 
+  
+
   if (error) console.error(error);
 
   if (isLoading) return <Loader />;
@@ -65,10 +67,10 @@ function VideoId() {
 
         <div className="video-comments">
           {commentsData.items.map((comment) => {
-            console.log(
-              "comment.snippet.topLevelComment.snippet",
-              comment.snippet.topLevelComment.snippet
-            );
+            // console.log(
+            //   "comment.snippet.topLevelComment.snippet",
+            //   comment.snippet.topLevelComment.snippet
+            // );
             const commentData = comment.snippet.topLevelComment.snippet;
             return (
               <VideoComment

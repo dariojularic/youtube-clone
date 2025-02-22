@@ -1,0 +1,30 @@
+.comment-container {
+  /* border: 1px solid red; */
+  display: flex;
+  margin-bottom: 8px;
+}
+
+.comment-author-name {
+  margin: 0;
+  color: rgb(153, 153, 153);
+}
+
+.comment-date {
+  margin: 0 8px;
+  font-size: 16px;
+  color: rgb(192, 192, 192);
+}
+
+.comment-content {
+  margin: 8px 0;
+  color: rgb(230, 230, 230)
+}
+
+.comment-author-date {
+  display: flex;
+  margin-top: 4px;
+}
+
+.comment-text-container {
+  margin-left: 16px;
+}
