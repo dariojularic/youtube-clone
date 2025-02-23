@@ -31,7 +31,7 @@ export const fetchVideoComments = async (videoId, options) => {
 
 export const fetchChannelVideos = async (channelId, options) => {
   try {
-    const response = await fetch(`https://youtube-v31.p.rapidapi.com/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=50`, options)
+    const response = await fetch(`https://youtube-v31.p.rapidapi.com/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=5`, options)
     const data = await response.json()
     return data
   } catch (error) {

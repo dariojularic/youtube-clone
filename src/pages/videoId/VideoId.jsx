@@ -17,7 +17,6 @@ import {
   faShareFromSquare,
   faCircleDown,
 } from "@fortawesome/free-regular-svg-icons";
-// import { faArrowRight } from "@fortawesome/free-regular-svg-icons";
 
 function VideoId() {
   const params = useParams();
@@ -36,16 +35,16 @@ function VideoId() {
     queryFn: () => fetchVideoComments(params.id, options),
   });
 
-  const channelId = data?.items[0]?.snippet?.channelId
+  const channelId = data?.items[0]?.snippet?.channelId;
 
   const {
     data: channelVideosData,
     error: channelVideosError,
-    isLoading: channelVideosIsLoading
+    isLoading: channelVideosIsLoading,
   } = useQuery({
     queryKey: ["channelVideos", channelId],
     queryFn: () => fetchChannelVideos(channelId, options),
-    enabled: !!channelId
+    enabled: !!channelId,
   });
 
   if (error) console.error(error);
@@ -54,22 +53,12 @@ function VideoId() {
 
   if (channelVideosError) console.error(channelVideosError);
 
+  if (isLoading || commentsIsLoading || channelVideosIsLoading)
+    return <Loader />;
 
-  if (isLoading || commentsIsLoading || channelVideosIsLoading) return <Loader />;
-
-  // if (commentsIsLoading) return <Loader />;
-
-  // if (channelVideosIsLoading) return <Loader />
 
   const videoInfo = data.items[0].snippet;
-  // console.log("videoInfo", videoInfo);
   const videoStatistics = data.items[0].statistics;
-  // console.log(channelId);
-  // console.log("snippet", data.items[0].snippet);
-
-  // console.log("channelVideosData", channelVideosData)
-  // console.log("data", data)
-  // console.log("commentsData", commentsData)
 
   return (
     <div className="video-id-container">
@@ -79,7 +68,6 @@ function VideoId() {
             width="960"
             height="560"
             src={`https://www.youtube.com/embed/${params.id}`}
-            // frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
           ></iframe>
@@ -132,9 +120,15 @@ function VideoId() {
 
       <div className="recommended-videos">
         <ul>
-          {channelVideosData.items.map(channelVideo => {
-            // console.log(channelVideo)
-            return <VideoCard key={channelVideo.id.videoId} id={channelVideo.id.videoId} {...channelVideo.snippet} />
+          {channelVideosData.items.map((channelVideo) => {
+            // console.log("channelVideo.id.videoId", channelVideo.id.videoId, channelVideo.snippet)
+            return (
+              <VideoCard
+                key={channelVideo.id.videoId}
+                id={channelVideo.id.videoId}
+                {...channelVideo.snippet}
+              />
+            );
           })}
         </ul>
       </div>
