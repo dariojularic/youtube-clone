@@ -33,10 +33,11 @@ function NewVideos() {
               <VideoCard
                 key={video.id.videoId}
                 id={video.id.videoId}
-                title={video.snippet.title}
-                publishedAt={video.snippet.publishedAt}
-                channelTitle={video.snippet.channelTitle}
-                thumbnails={video.snippet.thumbnails}
+                {...video.snippet}
+                // title={video.snippet.title}
+                // publishedAt={video.snippet.publishedAt}
+                // channelTitle={video.snippet.channelTitle}
+                // thumbnails={video.snippet.thumbnails}
               />
             // </Link>
           );

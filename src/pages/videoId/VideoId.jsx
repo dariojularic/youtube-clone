@@ -6,6 +6,7 @@ import {
   fetchChannelVideos,
 } from "../../api";
 import { useParams } from "react-router-dom";
+import VideoCard from "../newvideos/components/VideoCard";
 import { useQuery } from "@tanstack/react-query";
 import Loader from "../../layouts/loader/Loader";
 import VideoComment from "./components/VideoComment";
@@ -20,7 +21,6 @@ import {
 
 function VideoId() {
   const params = useParams();
-  // console.log(params)
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["singleVideo"],
@@ -36,28 +36,40 @@ function VideoId() {
     queryFn: () => fetchVideoComments(params.id, options),
   });
 
-  // const {
-  //   data: channelVideosData,
-  //   error: channelVideosError,
-  //   isLoading: channelVideosIsLoading,
-  // } = useQuery({
-  //   queryKey: ["channel"],
-  //   queryFn: () => fetchChannelVideos(params.id, options),
-  // });
+  const channelId = data?.items[0]?.snippet?.channelId
+
+  const {
+    data: channelVideosData,
+    error: channelVideosError,
+    isLoading: channelVideosIsLoading
+  } = useQuery({
+    queryKey: ["channelVideos", channelId],
+    queryFn: () => fetchChannelVideos(channelId, options),
+    enabled: !!channelId
+  });
 
   if (error) console.error(error);
 
-  if (commentsError) console.error(error);
+  if (commentsError) console.error(commentsError);
 
-  if (isLoading) return <Loader />;
+  if (channelVideosError) console.error(channelVideosError);
 
-  if (commentsIsLoading) return <Loader />;
+
+  if (isLoading || commentsIsLoading || channelVideosIsLoading) return <Loader />;
+
+  // if (commentsIsLoading) return <Loader />;
+
+  // if (channelVideosIsLoading) return <Loader />
 
   const videoInfo = data.items[0].snippet;
-  // console.log("commentsData", videoInfo);
+  // console.log("videoInfo", videoInfo);
   const videoStatistics = data.items[0].statistics;
-  // console.log(data.items[0]);
+  // console.log(channelId);
   // console.log("snippet", data.items[0].snippet);
+
+  // console.log("channelVideosData", channelVideosData)
+  // console.log("data", data)
+  // console.log("commentsData", commentsData)
 
   return (
     <div className="video-id-container">
@@ -104,11 +116,6 @@ function VideoId() {
 
         <div className="video-comments">
           {commentsData.items.map((comment) => {
-            // console.log(commentData)
-            // console.log(
-            //   "comment.snippet.topLevelComment.snippet",
-            //   comment.snippet.topLevelComment.snippet
-            // );
             const commentData = comment.snippet.topLevelComment.snippet;
             return (
               <VideoComment
@@ -123,7 +130,14 @@ function VideoId() {
         </div>
       </div>
 
-      <div className="recommended-videos"></div>
+      <div className="recommended-videos">
+        <ul>
+          {channelVideosData.items.map(channelVideo => {
+            // console.log(channelVideo)
+            return <VideoCard key={channelVideo.id.videoId} id={channelVideo.id.videoId} {...channelVideo.snippet} />
+          })}
+        </ul>
+      </div>
     </div>
   );
 }
