@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 function VideoCard({ title, thumbnails, publishedAt, channelTitle, id }) {
   return (
-    <Link to={`/video/${id}`}>
+    <Link className="video-card-link" to={`/video/${id}`}>
       <div className="video-card-container">
         <div className="image-container">
           <img src={thumbnails.medium.url} alt="" />

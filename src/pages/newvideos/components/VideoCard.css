@@ -27,3 +27,7 @@
   color: rgb(218, 218, 218);
   margin: 0;
 }
+
+.video-card-link {
+  text-decoration: none;
+}
