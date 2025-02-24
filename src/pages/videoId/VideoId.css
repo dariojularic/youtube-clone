@@ -24,6 +24,35 @@
   justify-content: space-between;
 }
 
+.channel-title {
+  align-self: center;
+}
+
 iframe {
   border: none;
+}
+
+.video-btn {
+  background-color: rgb(23, 23, 23);
+  border: none;
+  color: whitesmoke;
+  font-size: 18px;
+  margin-left: 8px;
+}
+
+.video-likes {
+  display: flex;
+  align-items: center;
+}
+
+.video-info {
+  background-color: rgb(23, 23, 23);
+  padding: 8px;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin-left: 32px;
+  
 }

@@ -22,7 +22,7 @@ function VideoId() {
   const params = useParams();
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["singleVideo"],
+    queryKey: ["singleVideo", params.id],
     queryFn: () => fetchSingleVideo(params.id, options),
   });
 
@@ -31,7 +31,7 @@ function VideoId() {
     error: commentsError,
     isLoading: commentsIsLoading,
   } = useQuery({
-    queryKey: ["videoComments"],
+    queryKey: ["videoComments", params.id],
     queryFn: () => fetchVideoComments(params.id, options),
   });
 
@@ -42,7 +42,7 @@ function VideoId() {
     error: channelVideosError,
     isLoading: channelVideosIsLoading,
   } = useQuery({
-    queryKey: ["channelVideos", channelId],
+    queryKey: ["channelVideos", channelId, params.id],
     queryFn: () => fetchChannelVideos(channelId, options),
     enabled: !!channelId,
   });
@@ -83,18 +83,18 @@ function VideoId() {
             <p className="video-views">{videoStatistics.viewCount} views</p>
 
             <div className="video-likes">
-              <button className="like-btn">
-                {videoStatistics.likeCount}
+              <button className="like-btn video-btn">
                 <FontAwesomeIcon icon={faThumbsUp} />
+                {videoStatistics.likeCount}
               </button>
-              <button className="dislike-btn">
+              <button className="dislike-btn video-btn">
                 <FontAwesomeIcon icon={faThumbsDown} />
               </button>
-              <button className="share-btn">
+              <button className="share-btn video-btn">
                 <FontAwesomeIcon icon={faShareFromSquare} />
                 SHARE
               </button>
-              <button className="download-btn">
+              <button className="download-btn video-btn">
                 <FontAwesomeIcon icon={faCircleDown} />
                 Download
               </button>
@@ -121,7 +121,6 @@ function VideoId() {
       <div className="recommended-videos">
         <ul>
           {channelVideosData.items.map((channelVideo) => {
-            // console.log("channelVideo.id.videoId", channelVideo.id.videoId, channelVideo.snippet)
             return (
               <VideoCard
                 key={channelVideo.id.videoId}

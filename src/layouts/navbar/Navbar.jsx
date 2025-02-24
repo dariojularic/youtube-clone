@@ -5,7 +5,7 @@ function Navbar() {
   return (
     <nav>
       <div className="navbar-container">
-        <Link to="/">
+        <Link className="link" to="/">
           <div className="logo-container">
             <img
               src="/src/assets/youtube.svg"

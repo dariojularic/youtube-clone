@@ -27,19 +27,13 @@ function NewVideos() {
       </div>
       <div className="video-grid">
         {data?.items.map((video) => {
-          console.log(video);
+          // console.log(video);
           return (
-            // <Link key={video.id.videoId}>
               <VideoCard
                 key={video.id.videoId}
                 id={video.id.videoId}
                 {...video.snippet}
-                // title={video.snippet.title}
-                // publishedAt={video.snippet.publishedAt}
-                // channelTitle={video.snippet.channelTitle}
-                // thumbnails={video.snippet.thumbnails}
               />
-            // </Link>
           );
         })}
       </div>
