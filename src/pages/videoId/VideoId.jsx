@@ -21,6 +21,11 @@ import {
 function VideoId() {
   const params = useParams();
 
+  // vidjet kako iskoristit promiseAll da se ovi videi dohvate svi odjednom
+
+  // useGetSingleVideo file i on vraca data error isLoading
+  // useGetExtraInfo file i on vraca data error isLoading
+
   const { data, error, isLoading } = useQuery({
     queryKey: ["singleVideo", params.id],
     queryFn: () => fetchSingleVideo(params.id, options),

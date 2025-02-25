@@ -2,7 +2,7 @@
   background-color: rgb(23, 23, 23);
   padding: 8px 12px;
   margin-top: 16px;
-  height: 120px;
+  height: 140px;
   display: flex;
   flex-direction: column;
   width: 360px;
@@ -32,7 +32,7 @@
 
 .link {
   text-decoration: none;
-  box-sizing: border-box;
+  width: fit-content;
 }
 
 .video-card-container {

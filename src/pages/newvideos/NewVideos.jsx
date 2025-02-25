@@ -13,29 +13,30 @@ function NewVideos() {
     queryKey: ["videos"],
     queryFn: () => fetchData(baseUrl, options),
   });
-  // console.log("query", query.isFetched);
-  // console.log("query", data);
 
   if (error) console.log("error", error);
 
   if (isLoading) return <Loader />;
 
   return (
-    <div className="home-container">
-      <div className="sidebar-container">
-        <Sidebar />
-      </div>
-      <div className="video-grid">
-        {data?.items.map((video) => {
-          // console.log(video);
-          return (
+    <div className="home-grid">
+      <h1>New videos</h1>
+      <div className="home-container">
+        <div className="sidebar-container">
+          <Sidebar />
+        </div>
+        <div className="video-grid">
+          {data?.items.map((video) => {
+            // console.log(video);
+            return (
               <VideoCard
                 key={video.id.videoId}
                 id={video.id.videoId}
                 {...video.snippet}
               />
-          );
-        })}
+            );
+          })}
+        </div>
       </div>
     </div>
   );

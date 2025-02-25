@@ -15,7 +15,7 @@ function Navbar() {
             <p className="logo-paragraph">YouTube</p>
           </div>
         </Link>
-        <form action="">
+        <form >
           <input
             type="text"
             placeholder="Search..."

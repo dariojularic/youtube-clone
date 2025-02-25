@@ -1,3 +1,18 @@
+
+// new URLSearchParams proguglat
+
+
+export const fetchCategoryVideos = async (category, options) => {
+  try {
+    const response = await fetch(`https://youtube-v31.p.rapidapi.com/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`, options);
+    const data = await response.json()
+    // console.log(data.items)
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 export const fetchData = async (url, options) => {
   try {
     const response = await fetch(url, options);
