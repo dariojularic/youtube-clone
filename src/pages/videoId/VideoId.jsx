@@ -85,12 +85,12 @@ function VideoId() {
           </div>
 
           <div className="video-details">
-            <p className="video-views">{videoStatistics.viewCount} views</p>
+            <p className="video-views">{Number(videoStatistics.viewCount).toLocaleString()} views</p>
 
             <div className="video-likes">
               <button className="like-btn video-btn">
                 <FontAwesomeIcon icon={faThumbsUp} />
-                {videoStatistics.likeCount}
+                {Number(videoStatistics.likeCount).toLocaleString()}
               </button>
               <button className="dislike-btn video-btn">
                 <FontAwesomeIcon icon={faThumbsDown} />

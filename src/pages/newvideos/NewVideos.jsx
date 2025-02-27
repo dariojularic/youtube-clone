@@ -5,7 +5,6 @@ import Sidebar from "../../layouts/sidebar/Sidebar";
 import Loader from "../../layouts/loader/Loader";
 import { baseUrl } from "../../api";
 import { options } from "../../api";
-import { Link } from "react-router-dom";
 import "./NewVideos.css";
 
 function NewVideos() {
