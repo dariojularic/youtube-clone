@@ -109,6 +109,7 @@ function VideoId() {
 
         <div className="video-comments">
           {commentsData.items.map((comment) => {
+            console.log(comment)
             const commentData = comment.snippet.topLevelComment.snippet;
             return (
               <VideoComment
