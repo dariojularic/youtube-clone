@@ -17,40 +17,50 @@ import {
   faShareFromSquare,
   faCircleDown,
 } from "@fortawesome/free-regular-svg-icons";
+import useGetRecommendedVideos from "../../api/useGetRecommendedVideos";
+import useGetSingleVideoData from "../../api/useGetSingleVideoData";
 
 function VideoId() {
   const params = useParams();
 
   // vidjet kako iskoristit promiseAll da se ovi videi dohvate svi odjednom
 
-  // useGetSingleVideo file i on vraca data error isLoading
+  // useGetSingleVideoData file i on vraca data error isLoading
   // useGetExtraInfo file i on vraca data error isLoading
 
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["singleVideo", params.id],
-    queryFn: () => fetchSingleVideo(params.id, options),
-  });
+  const { data, error, isLoading, commentsData, commentsError, commentsIsLoading } = useGetSingleVideoData(params.id)
 
-  const {
-    data: commentsData,
-    error: commentsError,
-    isLoading: commentsIsLoading,
-  } = useQuery({
-    queryKey: ["videoComments", params.id],
-    queryFn: () => fetchVideoComments(params.id, options),
-  });
-
+  // const { data, error, isLoading } = useQuery({
+  //   queryKey: ["singleVideo", params.id],
+  //   queryFn: () => fetchSingleVideo(params.id, options),
+  // });
   const channelId = data?.items[0]?.snippet?.channelId;
 
   const {
-    data: channelVideosData,
-    error: channelVideosError,
-    isLoading: channelVideosIsLoading,
-  } = useQuery({
-    queryKey: ["channelVideos", channelId, params.id],
-    queryFn: () => fetchChannelVideos(channelId, options),
-    enabled: !!channelId,
-  });
+    channelVideosData,
+    channelVideosError,
+    channelVideosIsLoading,
+  } = useGetRecommendedVideos(params.id, channelId)
+
+  // const {
+  //   data: commentsData,
+  //   error: commentsError,
+  //   isLoading: commentsIsLoading,
+  // } = useQuery({
+  //   queryKey: ["videoComments", params.id],
+  //   queryFn: () => fetchVideoComments(params.id, options),
+  // });
+
+
+  // const {
+  //   data: channelVideosData,
+  //   error: channelVideosError,
+  //   isLoading: channelVideosIsLoading,
+  // } = useQuery({
+  //   queryKey: ["channelVideos", channelId, params.id],
+  //   queryFn: () => fetchChannelVideos(channelId, options),
+  //   enabled: !!channelId,
+  // });
 
   if (error) console.error(error);
 
@@ -109,7 +119,7 @@ function VideoId() {
 
         <div className="video-comments">
           {commentsData.items.map((comment) => {
-            console.log(comment)
+            // console.log(comment)
             const commentData = comment.snippet.topLevelComment.snippet;
             return (
               <VideoComment

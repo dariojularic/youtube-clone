@@ -5,9 +5,15 @@ import Sidebar from "../../layouts/sidebar/Sidebar";
 import Loader from "../../layouts/loader/Loader";
 import { baseUrl } from "../../api";
 import { options } from "../../api";
+import { useState } from "react";
+
 import "./NewVideos.css";
 
 function NewVideos() {
+  const [activeCategory, setActiveCategory] = useState("");
+
+  console.log("gagwagawg")
+
   const { data, error, isLoading } = useQuery({
     queryKey: ["videos"],
     queryFn: () => fetchData(baseUrl, options),
@@ -19,10 +25,12 @@ function NewVideos() {
 
   if (isLoading) return <Loader />;
 
+  console.log(activeCategory)
+
   return (
     <div className="home-container">
       <div className="sidebar-container">
-        <Sidebar />
+        <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
       </div>
       <div className="video-grid">
         {data?.items.map((video) => {
