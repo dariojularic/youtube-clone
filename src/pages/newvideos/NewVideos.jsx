@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchData } from "../../api";
+import { fetchData, fetchCategoryVideos } from "../../api";
 import VideoCard from "./components/VideoCard";
 import Sidebar from "../../layouts/sidebar/Sidebar";
 import Loader from "../../layouts/loader/Loader";
@@ -10,22 +10,22 @@ import { useState } from "react";
 import "./NewVideos.css";
 
 function NewVideos() {
-    const [activeCategory, setActiveCategory] = useState("");
+    const [activeCategory, setActiveCategory] = useState("New");
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["videos"],
-    queryFn: () => fetchData(baseUrl, options),
+    queryKey: ["videos", activeCategory],
+    queryFn: () => fetchCategoryVideos(activeCategory, options),
   });
 
   if (error) console.log("error", error);
 
   if (isLoading) return <Loader />;
 
-  console.log(activeCategory)
+  // console.log(activeCategory)
 
   return (
     <div className="home-grid">
-      <h1>New videos</h1>
+      <h1>{`${activeCategory} videos`}</h1>
       <div className="home-container">
         <div className="sidebar-container">
           <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory}  />
