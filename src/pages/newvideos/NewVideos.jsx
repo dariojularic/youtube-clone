@@ -25,8 +25,9 @@ function NewVideos() {
 
   return (
     <div className="home-grid">
-      <h1>{`${activeCategory} videos`}</h1>
-      <div className="home-container">
+      <h1><span className="h1-span"> {activeCategory} </span> videos </h1>
+      {/* <h1>{`${activeCategory} videos`}</h1> */}
+      {/* <div className="home-container"> */}
         <div className="sidebar-container">
           <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory}  />
         </div>
@@ -42,7 +43,7 @@ function NewVideos() {
             );
           })}
         </div>
-      </div>
+      {/* </div> */}
     </div>
   );
 }

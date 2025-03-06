@@ -1,8 +1,8 @@
-/* .home-grid{
+.home-grid{
   display: grid;
   grid-template-columns: 240px 1fr;
   grid-template-rows: auto 1fr;
-} */
+}
 
 .video-grid {
   display: grid;
@@ -17,10 +17,14 @@
 }
 
 .sidebar-container {
-  /* grid-area: 2 / 1 / 3 / 2 */
+  grid-area: 2 / 1 / 3 / 2
 }
 
 h1 {
   color: white;
-  /* grid-area: 1 / 2 / 2 / 3 */
+  grid-area: 1 / 2 / 2 / 3
+}
+
+.h1-span {
+  color: red;
 }
