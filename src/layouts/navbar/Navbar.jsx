@@ -1,7 +1,9 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-function Navbar() {
+function Navbar({setActiveCategory}) {
+  const [inputValue, setInputValue] = useState("")
   return (
     <nav>
       <div className="navbar-container">
@@ -15,11 +17,16 @@ function Navbar() {
             <p className="logo-paragraph">YouTube</p>
           </div>
         </Link>
-        <form >
+        <form onSubmit={(event) => {
+          event.preventDefault()
+          console.log(inputValue)
+          setActiveCategory(inputValue)
+        }}>
           <input
             type="text"
             placeholder="Search..."
             className="navbar-search-input"
+            onChange={event => setInputValue(event.target.value)}
           />
         </form>
       </div>

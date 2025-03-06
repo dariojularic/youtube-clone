@@ -10,7 +10,9 @@ import { useState } from "react";
 import "./NewVideos.css";
 
 function NewVideos() {
-    const [activeCategory, setActiveCategory] = useState("New");
+  const [activeCategory, setActiveCategory] = useState("New");
+  // console.log(activeCategory)
+  // console.log(setActiveCategory)
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["videos", activeCategory],
@@ -33,7 +35,7 @@ function NewVideos() {
         </div>
         <div className="video-grid">
           {data?.items.map((video) => {
-            // console.log(video);
+            if (!video.id.videoId) return
             return (
               <VideoCard
                 key={video.id.videoId}

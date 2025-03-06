@@ -21,6 +21,7 @@ aside {
   width: 90%;
   padding-left: 12px;
   border-radius: 99px;
+  cursor: pointer;
 }
 
 .single-category:hover {

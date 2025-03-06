@@ -1,13 +1,6 @@
 import "./VideoId.css";
-import {
-  fetchVideoComments,
-  fetchSingleVideo,
-  options,
-  fetchChannelVideos,
-} from "../../api";
 import { useParams } from "react-router-dom";
 import VideoCard from "../newvideos/components/VideoCard";
-import { useQuery } from "@tanstack/react-query";
 import Loader from "../../layouts/loader/Loader";
 import VideoComment from "./components/VideoComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -30,10 +23,6 @@ function VideoId() {
 
   const { data, error, isLoading, commentsData, commentsError, commentsIsLoading } = useGetSingleVideoData(params.id)
 
-  // const { data, error, isLoading } = useQuery({
-  //   queryKey: ["singleVideo", params.id],
-  //   queryFn: () => fetchSingleVideo(params.id, options),
-  // });
   const channelId = data?.items[0]?.snippet?.channelId;
 
   const {
@@ -41,26 +30,6 @@ function VideoId() {
     channelVideosError,
     channelVideosIsLoading,
   } = useGetRecommendedVideos(params.id, channelId)
-
-  // const {
-  //   data: commentsData,
-  //   error: commentsError,
-  //   isLoading: commentsIsLoading,
-  // } = useQuery({
-  //   queryKey: ["videoComments", params.id],
-  //   queryFn: () => fetchVideoComments(params.id, options),
-  // });
-
-
-  // const {
-  //   data: channelVideosData,
-  //   error: channelVideosError,
-  //   isLoading: channelVideosIsLoading,
-  // } = useQuery({
-  //   queryKey: ["channelVideos", channelId, params.id],
-  //   queryFn: () => fetchChannelVideos(channelId, options),
-  //   enabled: !!channelId,
-  // });
 
   if (error) console.error(error);
 
@@ -119,8 +88,8 @@ function VideoId() {
 
         <div className="video-comments">
           {commentsData.items.map((comment) => {
-            // console.log(comment)
             const commentData = comment.snippet.topLevelComment.snippet;
+            console.log(commentData.authorProfileImageUrl)
             return (
               <VideoComment
                 key={comment.id}

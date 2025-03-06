@@ -1,11 +1,14 @@
 import { Outlet } from "react-router-dom";
 import Navbar from "./navbar/Navbar";
+import { useState } from "react";
 
 function SharedLayout() {
+  const [activeCategory, setActiveCategory] = useState("New");
+
   return (
     <>
-      <Navbar />
-      <Outlet />
+      <Navbar setActiveCategory={setActiveCategory} />
+      <Outlet activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
     </>
   );
 }
