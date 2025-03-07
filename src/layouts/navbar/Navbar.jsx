@@ -10,7 +10,7 @@ function Navbar({setActiveCategory}) {
         <Link className="link" to="/">
           <div className="logo-container">
             <img
-              src="/src/assets/youtube.svg"
+              src="/assets/youtube.svg"
               alt="youtube logo"
               className="youtube-logo"
             />
