@@ -12,7 +12,7 @@ function Sidebar({activeCategory, setActiveCategory}) {
       {categories.map((category) => {
         return (
           <div key={category.id} className={activeCategory !== category.category ? "single-category" : "single-category selected-category"} onClick={() => setActiveCategory(category.category)}>
-            <img src={`/src/assets/${category.icon}`} alt="" className="category-icon"  />
+            <img src={`/public/assets/${category.icon}`} alt="" className="category-icon"  />
             <p className="category-paragraph">{category.category}</p>
           </div>
         );
