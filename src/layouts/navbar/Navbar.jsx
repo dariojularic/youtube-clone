@@ -1,9 +1,13 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { categoryContext } from "../../App";
 
-function Navbar({setActiveCategory}) {
+function Navbar() {
   const [inputValue, setInputValue] = useState("")
+  const {activeCategory, setActiveCategory} = useContext(categoryContext)
+  console.log(activeCategory)
+
   return (
     <nav>
       <div className="navbar-container">

@@ -5,14 +5,16 @@ import Sidebar from "../../layouts/sidebar/Sidebar";
 import Loader from "../../layouts/loader/Loader";
 import { baseUrl } from "../../api";
 import { options } from "../../api";
-import { useState } from "react";
+import { useContext } from "react";
+import { categoryContext } from "../../App";
 
 import "./NewVideos.css";
 
 function NewVideos() {
-  const [activeCategory, setActiveCategory] = useState("New");
-  // console.log(activeCategory)
-  // console.log(setActiveCategory)
+  // const [activeCategory, setActiveCategory] = useState("New");
+  const {activeCategory, setActiveCategory} = useContext(categoryContext)
+  console.log(activeCategory)
+
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["videos", activeCategory],
@@ -23,12 +25,10 @@ function NewVideos() {
 
   if (isLoading) return <Loader />;
 
-  // console.log(activeCategory)
 
   return (
     <div className="home-grid">
       <h1><span className="h1-span"> {activeCategory} </span> videos </h1>
-      {/* <h1>{`${activeCategory} videos`}</h1> */}
       {/* <div className="home-container"> */}
         <div className="sidebar-container">
           <Sidebar activeCategory={activeCategory} setActiveCategory={setActiveCategory}  />
