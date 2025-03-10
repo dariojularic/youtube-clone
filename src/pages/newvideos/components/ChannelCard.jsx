@@ -14,7 +14,7 @@ function ChannelCard({ channelTitle, thumbnails, description, id }) {
         </div>
 
         <div className="channel-card-info-container">
-          <h4 className="card-title">{channelTitle}</h4>
+          <h4 className="channel-card-title">{channelTitle}</h4>
           <p className="channel-description">{description}</p>
         </div>
       </div>

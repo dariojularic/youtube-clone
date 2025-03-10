@@ -1,3 +1,36 @@
 .channel-card-img {
   border-radius: 50%;
+  height: 200px;
+  justify-self: center;
+}
+
+.link {
+  text-decoration: none;
+  width: fit-content;
+}
+
+.channel-description {
+  color: white;
+}
+
+/* .channel-card-info-container {
+  background-color: rgb(23, 23, 23);
+  padding: 8px 12px;
+  margin-top: 16px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  box-sizing: border-box;
+} */
+
+.channel-card-title {
+  align-self: center;
+  /* align-content: center; */
+  justify-self: center;
+  color: whitesmoke;
+}
+
+.image-container {
+
 }
