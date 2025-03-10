@@ -1,6 +1,6 @@
 .video-id-container {
   color: white;
-  width: 90%;
+  width: 80%;
   height: 100%;
   display: grid;
   grid-template-columns: 960px 1fr;
@@ -55,4 +55,9 @@ ul {
   list-style: none;
   padding: 0;
   margin-left: 32px;
+  margin-top: 0;
+}
+
+.recommended-video-list {
+
 }

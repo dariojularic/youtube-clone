@@ -12,19 +12,24 @@ import {
 } from "@fortawesome/free-regular-svg-icons";
 import useGetRecommendedVideos from "../../api/useGetRecommendedVideos";
 import useGetSingleVideoData from "../../api/useGetSingleVideoData";
+import { Link } from "react-router-dom";
 
 function VideoId() {
   const params = useParams();
 
-  const { data, error, isLoading, commentsData, commentsError, commentsIsLoading } = useGetSingleVideoData(params.id)
+  const {
+    data,
+    error,
+    isLoading,
+    commentsData,
+    commentsError,
+    commentsIsLoading,
+  } = useGetSingleVideoData(params.id);
 
   const channelId = data?.items[0]?.snippet?.channelId;
 
-  const {
-    channelVideosData,
-    channelVideosError,
-    channelVideosIsLoading,
-  } = useGetRecommendedVideos(params.id, channelId)
+  const { channelVideosData, channelVideosError, channelVideosIsLoading } =
+    useGetRecommendedVideos(params.id, channelId);
 
   if (error) console.error(error);
 
@@ -35,9 +40,10 @@ function VideoId() {
   if (isLoading || commentsIsLoading || channelVideosIsLoading)
     return <Loader />;
 
-
   const videoInfo = data.items[0].snippet;
   const videoStatistics = data.items[0].statistics;
+
+  console.log(videoInfo)
 
   return (
     <div className="video-id-container">
@@ -55,11 +61,15 @@ function VideoId() {
         <div className="video-info">
           <div className="title-channel-container">
             <h4>{videoInfo.title}</h4>
-            <p className="channel-title">{videoInfo.channelTitle}</p>
+            <Link className="link" to={`/channel/${videoInfo.channelId}`}>
+              <p className="channel-title">{videoInfo.channelTitle}</p>
+            </Link>
           </div>
 
           <div className="video-details">
-            <p className="video-views">{Number(videoStatistics.viewCount).toLocaleString()} views</p>
+            <p className="video-views">
+              {Number(videoStatistics.viewCount).toLocaleString()} views
+            </p>
 
             <div className="video-likes">
               <button className="like-btn video-btn">
@@ -98,9 +108,9 @@ function VideoId() {
       </div>
 
       <div className="recommended-videos">
-        <ul>
+        <ul className="recomended-videos-list">
           {channelVideosData.items.map((channelVideo) => {
-            if (params.id === channelVideo.id.videoId) return
+            if (params.id === channelVideo.id.videoId) return;
             return (
               <VideoCard
                 key={channelVideo.id.videoId}
