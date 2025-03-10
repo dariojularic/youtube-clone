@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchData, fetchCategoryVideos } from "../../api";
 import VideoCard from "./components/VideoCard";
+import ChannelCard from "./components/ChannelCard";
 import Sidebar from "../../layouts/sidebar/Sidebar";
 import Loader from "../../layouts/loader/Loader";
 import { baseUrl } from "../../api";
@@ -13,7 +14,7 @@ import "./NewVideos.css";
 function NewVideos() {
   // const [activeCategory, setActiveCategory] = useState("New");
   const {activeCategory, setActiveCategory} = useContext(categoryContext)
-  console.log(activeCategory)
+  // console.log(activeCategory)
 
 
   const { data, error, isLoading } = useQuery({
@@ -24,6 +25,7 @@ function NewVideos() {
   if (error) console.log("error", error);
 
   if (isLoading) return <Loader />;
+  console.log(data)
 
 
   return (
@@ -35,14 +37,15 @@ function NewVideos() {
         </div>
         <div className="video-grid">
           {data?.items.map((video) => {
-            if (!video.id.videoId) return
-            return (
-              <VideoCard
-                key={video.id.videoId}
-                id={video.id.videoId}
-                {...video.snippet}
-              />
-            );
+            if (!video.id.videoId && !video.id.channelId) return
+            return (video.id.kind === "youtube#video") ? <VideoCard key={video.id.videoId} id={video.id.videoId} {...video.snippet} /> : <ChannelCard key={video.id.channelId} id={video.id.channelId} {...video.snippet} />
+            // return (
+            //   <VideoCard
+            //     key={video.id.videoId}
+            //     id={video.id.videoId}
+            //     {...video.snippet}
+            //   />
+            // );
           })}
         </div>
       {/* </div> */}

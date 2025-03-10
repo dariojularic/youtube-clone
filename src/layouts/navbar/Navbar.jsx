@@ -2,11 +2,13 @@ import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
 import { categoryContext } from "../../App";
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
   const [inputValue, setInputValue] = useState("")
   const {activeCategory, setActiveCategory} = useContext(categoryContext)
-  console.log(activeCategory)
+  const navigate = useNavigate()
+  // console.log(activeCategory)
 
   return (
     <nav>
@@ -23,8 +25,9 @@ function Navbar() {
         </Link>
         <form onSubmit={(event) => {
           event.preventDefault()
-          console.log(inputValue)
+          console.log(event.target)
           setActiveCategory(inputValue)
+          navigate("/")
         }}>
           <input
             type="text"

@@ -16,11 +16,6 @@ import useGetSingleVideoData from "../../api/useGetSingleVideoData";
 function VideoId() {
   const params = useParams();
 
-  // vidjet kako iskoristit promiseAll da se ovi videi dohvate svi odjednom
-
-  // useGetSingleVideoData file i on vraca data error isLoading
-  // useGetExtraInfo file i on vraca data error isLoading
-
   const { data, error, isLoading, commentsData, commentsError, commentsIsLoading } = useGetSingleVideoData(params.id)
 
   const channelId = data?.items[0]?.snippet?.channelId;
@@ -89,7 +84,6 @@ function VideoId() {
         <div className="video-comments">
           {commentsData.items.map((comment) => {
             const commentData = comment.snippet.topLevelComment.snippet;
-            console.log(commentData.authorProfileImageUrl)
             return (
               <VideoComment
                 key={comment.id}
@@ -106,6 +100,7 @@ function VideoId() {
       <div className="recommended-videos">
         <ul>
           {channelVideosData.items.map((channelVideo) => {
+            if (params.id === channelVideo.id.videoId) return
             return (
               <VideoCard
                 key={channelVideo.id.videoId}
