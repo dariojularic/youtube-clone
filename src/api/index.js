@@ -14,6 +14,22 @@ export const fetchCategoryVideos = async (category, options) => {
   }
 };
 
+export const fetchChannelData = async (channelId, options) => {
+  try {
+    const response = await fetch(
+      `https://youtube-v31.p.rapidapi.com/channels?part=snippet,statistics&id=${channelId}`,
+      options
+    );
+    const data = await response.json();
+    // console.log(data.items)
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+
+
 export const fetchData = async (url, options) => {
   try {
     const response = await fetch(url, options);

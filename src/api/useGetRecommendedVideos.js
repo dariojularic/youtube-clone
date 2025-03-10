@@ -1,17 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchVideoComments, fetchChannelVideos, options } from ".";
+import { fetchChannelVideos, options } from ".";
 
 function useGetRecommendedVideos(paramsId, channelId) {
-  // const {
-  //   data: commentsData,
-  //   error: commentsError,
-  //   isLoading: commentsIsLoading,
-  // } = useQuery({
-  //   queryKey: ["videoComments", paramsId],
-  //   queryFn: () => fetchVideoComments(paramsId, options),
-  // });
-
-  // const channelId = commentsData?.items[0]?.snippet?.channelId;
 
   const {
     data: channelVideosData,
@@ -24,9 +14,6 @@ function useGetRecommendedVideos(paramsId, channelId) {
   });
 
   return {
-    // commentsData,
-    // commentsError,
-    // commentsIsLoading,
     channelVideosData,
     channelVideosError,
     channelVideosIsLoading,

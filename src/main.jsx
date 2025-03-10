@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import NewVideos from "./pages/newvideos/NewVideos.jsx";
 import VideoId from "./pages/videoId/VideoId.jsx";
+import ChannelId from "./pages/channelId/ChannelId.jsx";
 
 const router = createBrowserRouter([
   {
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <NewVideos /> },
       { path: "/video/:id", element: <VideoId /> },
-      // { path: "/channel/:id", element: <ChannelId /> },
+      { path: "/channel/:id", element: <ChannelId /> },
     ],
   },
 ]);
