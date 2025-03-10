@@ -13,17 +13,6 @@
   color: white;
 }
 
-/* .channel-card-info-container {
-  background-color: rgb(23, 23, 23);
-  padding: 8px 12px;
-  margin-top: 16px;
-  height: 140px;
-  display: flex;
-  flex-direction: column;
-  width: 360px;
-  box-sizing: border-box;
-} */
-
 .channel-card-title {
   align-self: center;
   /* align-content: center; */
@@ -32,5 +21,7 @@
 }
 
 .image-container {
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

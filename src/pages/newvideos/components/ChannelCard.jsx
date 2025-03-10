@@ -15,7 +15,7 @@ function ChannelCard({ channelTitle, thumbnails, description, id }) {
 
         <div className="channel-card-info-container">
           <h4 className="channel-card-title">{channelTitle}</h4>
-          <p className="channel-description">{description}</p>
+          <p className="channel-description">{description.substring(0, 100)}</p>
         </div>
       </div>
     </Link>
