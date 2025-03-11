@@ -1,5 +1,3 @@
-// new URLSearchParams proguglat
-
 export const fetchCategoryVideos = async (category, options) => {
   try {
     const response = await fetch(
@@ -7,7 +5,6 @@ export const fetchCategoryVideos = async (category, options) => {
       options
     );
     const data = await response.json();
-    // console.log(data.items)
     return data;
   } catch (error) {
     console.error(error);
@@ -21,7 +18,6 @@ export const fetchChannelData = async (channelId, options) => {
       options
     );
     const data = await response.json();
-    // console.log(data.items)
     return data;
   } catch (error) {
     console.error(error);
@@ -32,7 +28,6 @@ export const fetchData = async (url, options) => {
   try {
     const response = await fetch(url, options);
     const data = await response.json();
-    // console.log(data.items)
     return data;
   } catch (error) {
     console.error(error);

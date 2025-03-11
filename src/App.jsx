@@ -1,11 +1,12 @@
 import "./App.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SharedLayout from "./layouts/SharedLayout";
-import { createContext, useState } from "react";
+import { useState } from "react";
+import { categoryContext } from "./CategoryContext";
 
 const queryClient = new QueryClient();
 
-export const categoryContext = createContext();
+// export const categoryContext = createContext();
 function App() {
   const [activeCategory, setActiveCategory] = useState("New");
 

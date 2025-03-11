@@ -3,7 +3,6 @@ import { formatDistanceToNow } from "date-fns";
 
 function VideoComment({
   authorDisplayName,
-  updatedAt,
   publishedAt,
   authorProfileImageUrl,
   textOriginal,
