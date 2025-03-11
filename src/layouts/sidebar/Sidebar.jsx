@@ -1,5 +1,6 @@
 import "./Sidebar.css";
 import categories from "#src/categories";
+import PropTypes from 'prop-types';
 
 function Sidebar({ activeCategory, setActiveCategory }) {
   return (
@@ -27,5 +28,10 @@ function Sidebar({ activeCategory, setActiveCategory }) {
     </aside>
   );
 }
+
+Sidebar.propTypes = {
+  activeCategory: PropTypes.string,
+  setActiveCategory: PropTypes.func,
+};
 
 export default Sidebar;

@@ -6,12 +6,6 @@
   grid-template-columns: 960px 1fr;
   gap: 24px;
   margin: auto;
-  /* height: fit-content; */
-}
-
-.display-video-container {
-  /* height: 480px;
-  width: 640px; */
 }
 
 .video-details {
@@ -58,8 +52,4 @@ ul {
   padding: 0;
   margin-left: 32px;
   margin-top: 0;
-}
-
-.recommended-video-list {
-
 }

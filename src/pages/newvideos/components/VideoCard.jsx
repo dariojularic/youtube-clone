@@ -1,6 +1,7 @@
 import "./VideoCard.css";
 import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function VideoCard({ title, thumbnails, publishedAt, channelTitle, id }) {
   return (
@@ -21,5 +22,13 @@ function VideoCard({ title, thumbnails, publishedAt, channelTitle, id }) {
     </Link>
   );
 }
+
+VideoCard.propTypes = {
+  title: PropTypes.string,
+  thumbnails: PropTypes.object,
+  publishedAt: PropTypes.string,
+  channelTitle: PropTypes.string,
+  id: PropTypes.string,
+};
 
 export default VideoCard;

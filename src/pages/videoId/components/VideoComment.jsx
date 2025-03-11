@@ -1,5 +1,6 @@
 import "./VideoComment.css";
 import { formatDistanceToNow } from "date-fns";
+import PropTypes from 'prop-types';
 
 function VideoComment({
   authorDisplayName,
@@ -25,5 +26,12 @@ function VideoComment({
     </article>
   );
 }
+
+VideoComment.propTypes = {
+  authorDisplayName: PropTypes.string,
+  textOriginal: PropTypes.string,
+  authorProfileImageUrl: PropTypes.string,
+  publishedAt: PropTypes.string,
+};
 
 export default VideoComment;

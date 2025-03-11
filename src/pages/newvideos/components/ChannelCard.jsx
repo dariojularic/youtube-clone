@@ -1,5 +1,6 @@
 import "./ChannelCard.css";
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 function ChannelCard({ channelTitle, thumbnails, description, id }) {
   return (
@@ -21,5 +22,12 @@ function ChannelCard({ channelTitle, thumbnails, description, id }) {
     </Link>
   );
 }
+
+ChannelCard.propTypes = {
+  channelTitle: PropTypes.string,
+  thumbnails: PropTypes.object,
+  description: PropTypes.string,
+  id: PropTypes.string,
+};
 
 export default ChannelCard;

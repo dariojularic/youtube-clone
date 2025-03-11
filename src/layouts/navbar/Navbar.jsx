@@ -25,14 +25,15 @@ function Navbar() {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            console.log(event.target);
             setActiveCategory(inputValue);
             navigate("/");
+            setInputValue("")
           }}
         >
           <input
             name="searchbar"
             type="text"
+            value={inputValue}
             placeholder="Search..."
             className="navbar-search-input"
             onChange={(event) => setInputValue(event.target.value)}
