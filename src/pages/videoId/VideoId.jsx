@@ -88,20 +88,23 @@ function VideoId() {
             </div>
           </div>
         </div>
-
         <div className="video-comments">
-          {commentsData.items.map((comment) => {
-            const commentData = comment.snippet.topLevelComment.snippet;
-            return (
-              <VideoComment
-                key={comment.id}
-                authorDisplayName={commentData.authorDisplayName}
-                publishedAt={commentData.publishedAt}
-                authorProfileImageUrl={commentData.authorProfileImageUrl}
-                textOriginal={commentData.textOriginal}
-              />
-            );
-          })}
+          {commentsData.items ? (
+            commentsData?.items?.map((comment) => {
+              const commentData = comment.snippet.topLevelComment.snippet;
+              return (
+                <VideoComment
+                  key={comment.id}
+                  authorDisplayName={commentData.authorDisplayName}
+                  publishedAt={commentData.publishedAt}
+                  authorProfileImageUrl={commentData.authorProfileImageUrl}
+                  textOriginal={commentData.textOriginal}
+                />
+              );
+            })
+          ) : (
+            <p>Comments for this video are disabled</p>
+          )}
         </div>
       </div>
 

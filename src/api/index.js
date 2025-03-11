@@ -24,6 +24,13 @@ export const fetchChannelData = async (channelId, options) => {
   }
 };
 
+// fetchFactory
+// get prima query parametre
+// const a = {
+//   get() {}
+// }
+
+
 export const fetchData = async (url, options) => {
   try {
     const response = await fetch(url, options);
