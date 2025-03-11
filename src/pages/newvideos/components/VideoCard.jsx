@@ -1,5 +1,5 @@
 import "./VideoCard.css";
-import {  formatDistanceToNow } from "date-fns";
+import { formatDistanceToNow } from "date-fns";
 import { Link } from "react-router-dom";
 
 function VideoCard({ title, thumbnails, publishedAt, channelTitle, id }) {

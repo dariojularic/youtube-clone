@@ -10,14 +10,14 @@ function useGetChannelData(paramsId) {
   });
 
   const {
-      data: channelVideosData,
-      error: channelVideosError,
-      isLoading: channelVideosIsLoading,
-    } = useQuery({
-      queryKey: ["channelVideos", paramsId],
-      queryFn: () => fetchChannelVideos(paramsId, options),
-      enabled: !!paramsId,
-    });
+    data: channelVideosData,
+    error: channelVideosError,
+    isLoading: channelVideosIsLoading,
+  } = useQuery({
+    queryKey: ["channelVideos", paramsId],
+    queryFn: () => fetchChannelVideos(paramsId, options),
+    enabled: !!paramsId,
+  });
 
   return {
     data,
@@ -25,7 +25,7 @@ function useGetChannelData(paramsId) {
     isLoading,
     channelVideosData,
     channelVideosError,
-    channelVideosIsLoading
+    channelVideosIsLoading,
   };
 }
 

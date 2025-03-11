@@ -1,7 +1,7 @@
 import "./VideoId.css";
 import { useParams } from "react-router-dom";
-import VideoCard from "../newvideos/components/VideoCard";
-import Loader from "../../layouts/loader/Loader";
+import VideoCard from "#pages/newvideos/components/VideoCard";
+import Loader from "#layouts/loader/Loader";
 import VideoComment from "./components/VideoComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -10,8 +10,8 @@ import {
   faShareFromSquare,
   faCircleDown,
 } from "@fortawesome/free-regular-svg-icons";
-import useGetRecommendedVideos from "../../api/useGetRecommendedVideos";
-import useGetSingleVideoData from "../../api/useGetSingleVideoData";
+import useGetRecommendedVideos from "#api/useGetRecommendedVideos";
+import useGetSingleVideoData from "#api/useGetSingleVideoData";
 import { Link } from "react-router-dom";
 
 function VideoId() {
@@ -42,8 +42,6 @@ function VideoId() {
 
   const videoInfo = data.items[0].snippet;
   const videoStatistics = data.items[0].statistics;
-
-  console.log(videoInfo)
 
   return (
     <div className="video-id-container">

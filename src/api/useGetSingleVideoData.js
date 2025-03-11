@@ -16,8 +16,14 @@ function useGetSingleVideoData(paramsId) {
     queryFn: () => fetchVideoComments(paramsId, options),
   });
 
-
-  return { data, error, isLoading, commentsData, commentsError, commentsIsLoading };
+  return {
+    data,
+    error,
+    isLoading,
+    commentsData,
+    commentsError,
+    commentsIsLoading,
+  };
 }
 
 export default useGetSingleVideoData;

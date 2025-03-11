@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchChannelVideos, options } from ".";
 
 function useGetRecommendedVideos(paramsId, channelId) {
-
   const {
     data: channelVideosData,
     error: channelVideosError,

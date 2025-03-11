@@ -1,8 +1,8 @@
 import "./ChannelId.css";
-import useGetChannelData from "../../api/useGetChannelData";
+import useGetChannelData from "#api/useGetChannelData";
 import { useParams } from "react-router-dom";
-import Loader from "../../layouts/loader/Loader";
-import VideoCard from "../newvideos/components/VideoCard";
+import Loader from "#layouts/loader/Loader";
+import VideoCard from "#pages/newvideos/components/VideoCard";
 
 function ChannelId() {
   const params = useParams();
@@ -21,8 +21,6 @@ function ChannelId() {
   if (channelVideosError) console.log("error", error);
 
   if (isLoading || channelVideosIsLoading) return <Loader />;
-  // console.log(data);
-  console.log(channelVideosData);
 
   const snippet = data.items[0].snippet;
   const imageUrl = data.items[0].brandingSettings.image.bannerExternalUrl;
@@ -36,7 +34,9 @@ function ChannelId() {
       </div>
 
       <div className="grid-container">
-        <h3 className="channel-id-grid-heading">{`${snippet.title}'s`} <span className="channel-id-span">videos</span></h3>
+        <h3 className="channel-id-grid-heading">
+          {`${snippet.title}'s`} <span className="channel-id-span">videos</span>
+        </h3>
         <div className="video-grid">
           {channelVideosData.items.map((video) => {
             return (

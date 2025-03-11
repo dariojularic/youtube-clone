@@ -5,10 +5,9 @@ import { categoryContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
-  const [inputValue, setInputValue] = useState("")
-  const {activeCategory, setActiveCategory} = useContext(categoryContext)
-  const navigate = useNavigate()
-  // console.log(activeCategory)
+  const [inputValue, setInputValue] = useState("");
+  const { setActiveCategory } = useContext(categoryContext);
+  const navigate = useNavigate();
 
   return (
     <nav>
@@ -23,17 +22,20 @@ function Navbar() {
             <p className="logo-paragraph">YouTube</p>
           </div>
         </Link>
-        <form onSubmit={(event) => {
-          event.preventDefault()
-          console.log(event.target)
-          setActiveCategory(inputValue)
-          navigate("/")
-        }}>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            console.log(event.target);
+            setActiveCategory(inputValue);
+            navigate("/");
+          }}
+        >
           <input
+            name="searchbar"
             type="text"
             placeholder="Search..."
             className="navbar-search-input"
-            onChange={event => setInputValue(event.target.value)}
+            onChange={(event) => setInputValue(event.target.value)}
           />
         </form>
       </div>
