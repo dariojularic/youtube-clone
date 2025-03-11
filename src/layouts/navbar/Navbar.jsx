@@ -1,7 +1,7 @@
 import "./Navbar.css";
 import { Link } from "react-router-dom";
 import { useState, useContext } from "react";
-import { categoryContext } from "../../App";
+import { categoryContext } from "#src/CategoryContext";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {

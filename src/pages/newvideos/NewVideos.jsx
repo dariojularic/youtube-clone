@@ -6,7 +6,7 @@ import Sidebar from "#layouts/sidebar/Sidebar";
 import Loader from "#layouts/loader/Loader";
 import { options } from "#api";
 import { useContext } from "react";
-import { categoryContext } from "#src/App";
+import { categoryContext } from "#src/CategoryContext";
 
 import "./NewVideos.css";
 

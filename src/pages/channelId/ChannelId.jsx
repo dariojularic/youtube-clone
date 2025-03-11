@@ -29,7 +29,7 @@ function ChannelId() {
     <div className="channel-id-container">
       <div className="channel-description">
         <img src={imageUrl} className="channel-id-image" />
-        <h2 className="channel-title">{snippet.title}</h2>
+        <h2 className="channel-id-title">{snippet.title}</h2>
         <p className="description">{snippet.description}</p>
       </div>
 
