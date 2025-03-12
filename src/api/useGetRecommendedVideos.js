@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchChannelVideos, fetchData, fetchApi, options } from ".";
+import { fetchApi } from ".";
 
 function useGetRecommendedVideos(paramsId, channelId) {
   const {
@@ -8,7 +8,7 @@ function useGetRecommendedVideos(paramsId, channelId) {
     isLoading: channelVideosIsLoading,
   } = useQuery({
     queryKey: ["channelVideos", channelId, paramsId],
-    queryFn: () => fetchData(fetchApi.getChannelVideos(channelId), options),
+    queryFn: () => fetchApi.fetchData(fetchApi.getChannelVideos(channelId)),
     enabled: !!channelId,
   });
 

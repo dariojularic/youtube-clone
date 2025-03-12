@@ -11,31 +11,31 @@ export const options = {
 
 
 
-export const fetchCategoryVideos = async (category, options) => {
-  try {
-    const response = await fetch(
-      `https://youtube-v31.p.rapidapi.com/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+// export const fetchCategoryVideos = async (category, options) => {
+//   try {
+//     const response = await fetch(
+//       `https://youtube-v31.p.rapidapi.com/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`,
+//       options
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
-export const fetchChannelData = async (channelId, options) => {
-  try {
-    const response = await fetch(
-      `https://youtube-v31.p.rapidapi.com/channels?part=snippet,statistics&id=${channelId}`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+// export const fetchChannelData = async (channelId, options) => {
+//   try {
+//     const response = await fetch(
+//       `https://youtube-v31.p.rapidapi.com/channels?part=snippet,statistics&id=${channelId}`,
+//       options
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
 
 
@@ -50,11 +50,11 @@ export function fetchFactory() {
     },
   };
 
+  const getSingleVideo = (videoId) => `${baseUrl}/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${videoId}`
+  const getVideoComments = (videoId) => `${baseUrl}/commentThreads?part=snippet&videoId=${videoId}&maxResults=8`
   const getCategoryVideos = (category) => `${baseUrl}/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`
   const getChannelData = (channelId) => `${baseUrl}/channels?part=snippet,statistics&id=${channelId}`
-  const getSingleVideo = (videoId) => `${baseUrl}/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${videoId}`
-  const getVideoComments = (videoId) => `${baseUrl}/commentThreads?part=snippet&videoId=${videoId}&maxResults=80`
-  const getChannelVideos = (channelId) => `${baseUrl}/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=32`
+  const getChannelVideos = (channelId) => `${baseUrl}/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=8`
 
   const fetchData = async (url) => {
     try {
@@ -75,51 +75,51 @@ export const fetchApi = fetchFactory()
 
 
 
-export const fetchData = async (url, options) => {
-  try {
-    const response = await fetch(url, options);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+// export const fetchData = async (url, options) => {
+//   try {
+//     const response = await fetch(url, options);
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
-export const fetchSingleVideo = async (videoId, options) => {
-  try {
-    const response = await fetch(
-      `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${videoId}`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+// export const fetchSingleVideo = async (videoId, options) => {
+//   try {
+//     const response = await fetch(
+//       `https://youtube-v31.p.rapidapi.com/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${videoId}`,
+//       options
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
-export const fetchVideoComments = async (videoId, options) => {
-  try {
-    const response = await fetch(
-      `https://youtube-v31.p.rapidapi.com/commentThreads?part=snippet&videoId=${videoId}&maxResults=80`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+// export const fetchVideoComments = async (videoId, options) => {
+//   try {
+//     const response = await fetch(
+//       `https://youtube-v31.p.rapidapi.com/commentThreads?part=snippet&videoId=${videoId}&maxResults=80`,
+//       options
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };
 
-export const fetchChannelVideos = async (channelId, options) => {
-  try {
-    const response = await fetch(
-      `https://youtube-v31.p.rapidapi.com/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=32`,
-      options
-    );
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
-};
+// export const fetchChannelVideos = async (channelId, options) => {
+//   try {
+//     const response = await fetch(
+//       `https://youtube-v31.p.rapidapi.com/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=32`,
+//       options
+//     );
+//     const data = await response.json();
+//     return data;
+//   } catch (error) {
+//     console.error(error);
+//   }
+// };

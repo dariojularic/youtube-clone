@@ -1,10 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchCategoryVideos, fetchApi } from "#api";
+import { fetchApi } from "#api";
 import VideoCard from "./components/VideoCard";
 import ChannelCard from "./components/ChannelCard";
 import Sidebar from "#layouts/sidebar/Sidebar";
 import Loader from "#layouts/loader/Loader";
-import { options } from "#api";
 import { useContext } from "react";
 import { categoryContext } from "#src/CategoryContext";
 

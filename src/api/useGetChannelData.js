@@ -1,13 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
-import { options } from ".";
-import { fetchChannelData, fetchChannelVideos, fetchData, fetchApi } from ".";
+import { fetchApi } from ".";
 
 function useGetChannelData(paramsId) {
 
   console.log(typeof fetchApi.getChannelData(paramsId))
   const { data, error, isLoading } = useQuery({
     queryKey: ["channelData", paramsId],
-    queryFn: () => fetchData(fetchApi.getChannelData(paramsId)),
+    queryFn: () => fetchApi.fetchData(fetchApi.getChannelData(paramsId)),
     enabled: !!paramsId,
   });
 
@@ -17,7 +16,7 @@ function useGetChannelData(paramsId) {
     isLoading: channelVideosIsLoading,
   } = useQuery({
     queryKey: ["channelVideos", paramsId],
-    queryFn: () => fetchData(fetchApi.getChannelVideos(paramsId)),
+    queryFn: () => fetchApi.fetchData(fetchApi.getChannelVideos(paramsId)),
     enabled: !!paramsId,
   });
   // const { data, error, isLoading } = useQuery({

@@ -15,6 +15,7 @@
   font-size: 20px;
   display: -webkit-box;
   -webkit-box-orient: vertical;
+  /* hocu stavit da card title ne bude dulji od dva reda */
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   overflow: hidden;
