@@ -1,43 +1,43 @@
 // export const baseUrl =
 //   "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=7ghhRHRP6t4&part=id%2Csnippet&type=video&maxResults=20";
 
-export const options = {
-  method: "GET",
-  headers: {
-    "x-rapidapi-key": "9aba36c31dmshf69462f95cf832ap1e712bjsne4307c79a742",
-    "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
-  },
-};
 
 
 
 // export const fetchCategoryVideos = async (category, options) => {
 //   try {
 //     const response = await fetch(
-//       `https://youtube-v31.p.rapidapi.com/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`,
+  //       `https://youtube-v31.p.rapidapi.com/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`,
 //       options
 //     );
 //     const data = await response.json();
 //     return data;
 //   } catch (error) {
-//     console.error(error);
-//   }
-// };
+  //     console.error(error);
+  //   }
+  // };
 
-// export const fetchChannelData = async (channelId, options) => {
+  // export const fetchChannelData = async (channelId, options) => {
 //   try {
-//     const response = await fetch(
+  //     const response = await fetch(
 //       `https://youtube-v31.p.rapidapi.com/channels?part=snippet,statistics&id=${channelId}`,
 //       options
 //     );
 //     const data = await response.json();
 //     return data;
 //   } catch (error) {
-//     console.error(error);
-//   }
+  //     console.error(error);
+  //   }
 // };
 
 // console.log(import.meta.env.VITE_API_KEY)
+// export const options = {
+//   method: "GET",
+//   headers: {
+//     "x-rapidapi-key": "9aba36c31dmshf69462f95cf832ap1e712bjsne4307c79a742",
+//     "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+//   },
+// };
 
 export function fetchFactory() {
   const baseUrl = "https://youtube-v31.p.rapidapi.com"
