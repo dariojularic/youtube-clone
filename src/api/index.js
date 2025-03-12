@@ -1,3 +1,16 @@
+// export const baseUrl =
+//   "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=7ghhRHRP6t4&part=id%2Csnippet&type=video&maxResults=20";
+
+export const options = {
+  method: "GET",
+  headers: {
+    "x-rapidapi-key": "9aba36c31dmshf69462f95cf832ap1e712bjsne4307c79a742",
+    "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+  },
+};
+
+
+
 export const fetchCategoryVideos = async (category, options) => {
   try {
     const response = await fetch(
@@ -24,11 +37,42 @@ export const fetchChannelData = async (channelId, options) => {
   }
 };
 
-// fetchFactory
-// get prima query parametre
-// const a = {
-//   get() {}
-// }
+
+
+export function fetchFactory() {
+  const baseUrl = "https://youtube-v31.p.rapidapi.com"
+
+  const options = {
+    method: "GET",
+    headers: {
+      "x-rapidapi-key": "9aba36c31dmshf69462f95cf832ap1e712bjsne4307c79a742",
+      "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
+    },
+  };
+
+  const getCategoryVideos = (category) => `${baseUrl}/search?q=${category}&part=snippet,id&maxResults=24&regionCode=US`
+  const getChannelData = (channelId) => `${baseUrl}/channels?part=snippet,statistics&id=${channelId}`
+  const getSingleVideo = (videoId) => `${baseUrl}/videos?part=contentDetails%2Csnippet%2Cstatistics&id=${videoId}`
+  const getVideoComments = (videoId) => `${baseUrl}/commentThreads?part=snippet&videoId=${videoId}&maxResults=80`
+  const getChannelVideos = (channelId) => `${baseUrl}/search?channelId=${channelId}&part=snippet%2Cid&order=date&maxResults=32`
+
+  const fetchData = async (url) => {
+    try {
+      const response = await fetch(url, options);
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  return {getCategoryVideos, getChannelData, getChannelVideos, getSingleVideo, getVideoComments, fetchData}
+}
+
+export const fetchApi = fetchFactory()
+
+
+
 
 
 export const fetchData = async (url, options) => {
@@ -78,15 +122,4 @@ export const fetchChannelVideos = async (channelId, options) => {
   } catch (error) {
     console.error(error);
   }
-};
-
-export const baseUrl =
-  "https://youtube-v31.p.rapidapi.com/search?relatedToVideoId=7ghhRHRP6t4&part=id%2Csnippet&type=video&maxResults=20";
-
-export const options = {
-  method: "GET",
-  headers: {
-    "x-rapidapi-key": "9aba36c31dmshf69462f95cf832ap1e712bjsne4307c79a742",
-    "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
-  },
 };

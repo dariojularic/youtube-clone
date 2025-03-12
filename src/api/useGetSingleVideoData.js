@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchSingleVideo, fetchVideoComments, options } from ".";
+import { fetchSingleVideo, fetchVideoComments, fetchData, fetchApi } from ".";
 
 function useGetSingleVideoData(paramsId) {
   const { data, error, isLoading } = useQuery({
     queryKey: ["singleVideo", paramsId],
-    queryFn: () => fetchSingleVideo(paramsId, options),
+    queryFn: () => fetchData(fetchApi.getSingleVideo(paramsId)),
   });
 
   const {
@@ -13,7 +13,7 @@ function useGetSingleVideoData(paramsId) {
     isLoading: commentsIsLoading,
   } = useQuery({
     queryKey: ["videoComments", paramsId],
-    queryFn: () => fetchVideoComments(paramsId, options),
+    queryFn: () => fetchData(fetchApi.getVideoComments(paramsId)),
   });
 
   return {

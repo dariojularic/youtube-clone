@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchCategoryVideos } from "#api";
+import { fetchCategoryVideos, fetchApi } from "#api";
 import VideoCard from "./components/VideoCard";
 import ChannelCard from "./components/ChannelCard";
 import Sidebar from "#layouts/sidebar/Sidebar";
@@ -15,7 +15,7 @@ function NewVideos() {
 
   const { data, error, isLoading } = useQuery({
     queryKey: ["videos", activeCategory],
-    queryFn: () => fetchCategoryVideos(activeCategory, options),
+    queryFn: () => fetchApi.fetchData(fetchApi.getCategoryVideos(activeCategory)),
   });
 
   if (error) console.log("error", error);
