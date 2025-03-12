@@ -37,7 +37,7 @@ export const options = {
 //   }
 // };
 
-
+// console.log(import.meta.env.VITE_API_KEY)
 
 export function fetchFactory() {
   const baseUrl = "https://youtube-v31.p.rapidapi.com"
@@ -45,7 +45,7 @@ export function fetchFactory() {
   const options = {
     method: "GET",
     headers: {
-      "x-rapidapi-key": "9aba36c31dmshf69462f95cf832ap1e712bjsne4307c79a742",
+      "x-rapidapi-key": import.meta.env.VITE_API_KEY,
       "x-rapidapi-host": "youtube-v31.p.rapidapi.com",
     },
   };
