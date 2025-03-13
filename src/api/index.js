@@ -38,7 +38,7 @@
 
 // funkcija buildUrl prima endpoint i query parametre
 
-export function buildUrl(endpoint, value) {
+export async function buildUrl(endpoint, queryParams) {
   const baseUrl = "https://youtube-v31.p.rapidapi.com";
 
   const options = {
@@ -49,15 +49,14 @@ export function buildUrl(endpoint, value) {
     },
   };
 
-
-  const queryParams = {
-    part: (endpoint === "videos") ? "contentDetails%2Csnippet%2Cstatistics" : "snippet",
-    videoId: value,
-    "maxResults": 8,
-  };
+  // const queryParams = {
+  //   "part": (endpoint === "videos") ? "contentDetails%2Csnippet%2Cstatistics" : "snippet",
+  //   "videoId": value,
+  //   "maxResults": 8,
+  // };
 
   const completeUrl = `${baseUrl}/${endpoint}?${new URLSearchParams(queryParams).toString()}`
-
+  // console.log(completeUrl)
 
   const fetchData = async () => {
     try {
@@ -69,18 +68,24 @@ export function buildUrl(endpoint, value) {
     }
   };
 
-  fetchData()
-
-
+  try {
+    const data = await fetchData(); // Await the result of fetchData
+    return data; // Return the data directly
+  } catch (error) {
+    console.error("Error in buildUrl:", error);
+    return null; // Or handle the error as needed
+  }
 }
+
+// console.log(buildUrl("commentThreads", "0Y74yXozT2I"))
 
 // /videos?part=contentDetails%2Csnippet%2Cstatistics&id=3253`
 // commentThreads?part=snippet&videoId=gag3wt2&maxResults=8
-const queryParams = {
-  part: "snippet",
-  videoId: value,
-  "filter[adId]": this.props.id,
-};
+// const queryParams = {
+//   part: "snippet",
+//   videoId: value,
+//   "filter[adId]": this.props.id,
+// };
 
 // const response = await ccapi({
 //   url: `/ccapi/v4/analytics/ads-visit-records?${new URLSearchParams(queryParams).toString()}`,
@@ -111,6 +116,7 @@ export function fetchFactory() {
 
   const fetchData = async (url) => {
     try {
+      // console.log(url)
       const response = await fetch(url, options);
       const data = await response.json();
       return data;

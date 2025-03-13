@@ -1,10 +1,16 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchApi } from ".";
+import { fetchApi, buildUrl } from ".";
 
 function useGetChannelData(paramsId) {
   const { data, error, isLoading } = useQuery({
     queryKey: ["channelData", paramsId],
     queryFn: () => fetchApi.fetchData(fetchApi.getChannelData(paramsId)),
+    // queryFn: () =>
+    //   buildUrl("commentThreads", {
+    //     part: "snippet",
+    //     videoId: paramsId,
+    //     maxResults: 8,
+    //   }),
     enabled: !!paramsId,
   });
 
