@@ -68,14 +68,21 @@ export async function buildUrl(endpoint, queryParams) {
     }
   };
 
-  try {
+  // try {
     const data = await fetchData(); // Await the result of fetchData
+    console.log(data)
     return data; // Return the data directly
-  } catch (error) {
-    console.error("Error in buildUrl:", error);
-    return null; // Or handle the error as needed
-  }
+  // } catch (error) {
+  //   console.error("Error in buildUrl:", error);
+  //   return null;
+  // }
 }
+
+console.log(buildUrl("commentThreads", {
+  "part": "snippet",
+  "videoId": "VsLRhJeTAJ0",
+  "maxResults": 8,
+}))
 
 // console.log(buildUrl("commentThreads", "0Y74yXozT2I"))
 
