@@ -22,10 +22,6 @@ function ChannelId() {
 
   if (isLoading || channelVideosIsLoading) return <Loader />;
 
-  console.log(data)
-  console.log(channelVideosData)
-
-
   const snippet = data.items[0].snippet;
   const imageUrl = data.items[0].brandingSettings.image.bannerExternalUrl;
 

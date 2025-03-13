@@ -49,14 +49,9 @@ export async function buildUrl(endpoint, queryParams) {
     },
   };
 
-  // const queryParams = {
-  //   "part": (endpoint === "videos") ? "contentDetails%2Csnippet%2Cstatistics" : "snippet",
-  //   "videoId": value,
-  //   "maxResults": 8,
-  // };
-
-  const completeUrl = `${baseUrl}/${endpoint}?${new URLSearchParams(queryParams).toString()}`
-  // console.log(completeUrl)
+  const completeUrl = `${baseUrl}/${endpoint}?${new URLSearchParams(
+    queryParams
+  ).toString()}`;
 
   const fetchData = async () => {
     try {
@@ -68,21 +63,9 @@ export async function buildUrl(endpoint, queryParams) {
     }
   };
 
-  // try {
-    const data = await fetchData(); // Await the result of fetchData
-    console.log(data)
-    return data; // Return the data directly
-  // } catch (error) {
-  //   console.error("Error in buildUrl:", error);
-  //   return null;
-  // }
+  const data = await fetchData();
+  return data;
 }
-
-console.log(buildUrl("commentThreads", {
-  "part": "snippet",
-  "videoId": "VsLRhJeTAJ0",
-  "maxResults": 8,
-}))
 
 // console.log(buildUrl("commentThreads", "0Y74yXozT2I"))
 

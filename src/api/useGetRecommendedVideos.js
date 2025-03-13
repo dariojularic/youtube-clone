@@ -10,10 +10,11 @@ function useGetRecommendedVideos(paramsId, channelId) {
     queryKey: ["channelVideos", channelId, paramsId],
     // queryFn: () => fetchApi.fetchData(fetchApi.getChannelVideos(channelId)),
     queryFn: () =>
-      buildUrl("videos", {
-        // jel ima razlike izmedu stavljanja zareza i %2C?
-        part: "contentDetails,snippet,statistics",
-        id: paramsId,
+      buildUrl("search", {
+        channelId: channelId,
+        part: "snippet,id",
+        order: "date",
+        maxResults: "8"
       }),
     enabled: !!channelId,
   });

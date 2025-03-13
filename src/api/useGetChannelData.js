@@ -7,9 +7,8 @@ function useGetChannelData(paramsId) {
     // queryFn: () => fetchApi.fetchData(fetchApi.getChannelData(paramsId)),
     queryFn: () =>
       buildUrl("channels", {
-        "part": "snippet,statistics",
-        "id": paramsId,
-        // "maxResults": 8,
+        part: "snippet,statistics",
+        id: paramsId,
       }),
     enabled: !!paramsId,
   });
@@ -20,7 +19,14 @@ function useGetChannelData(paramsId) {
     isLoading: channelVideosIsLoading,
   } = useQuery({
     queryKey: ["channelVideos", paramsId],
-    queryFn: () => fetchApi.fetchData(fetchApi.getChannelVideos(paramsId)),
+    // queryFn: () => fetchApi.fetchData(fetchApi.getChannelVideos(paramsId)),
+    queryFn: () =>
+      buildUrl("search", {
+        channelId: paramsId,
+        part: "snippet,id",
+        order: "date",
+        maxResults: "12",
+      }),
     enabled: !!paramsId,
   });
 

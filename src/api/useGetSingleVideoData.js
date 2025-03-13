@@ -7,10 +7,8 @@ function useGetSingleVideoData(paramsId) {
     // queryFn: () => fetchApi.fetchData(fetchApi.getSingleVideo(paramsId)),
     queryFn: () =>
       buildUrl("videos", {
-        // jel ima razlike izmedu stavljanja zareza i %2C?
         part: "contentDetails,snippet,statistics",
         id: paramsId,
-        // maxResults: 12,
       }),
   });
 
