@@ -17,7 +17,8 @@
   -webkit-box-orient: vertical;
     /* hocu stavit da card title ne bude dulji od dva reda */
     /* kako maknut &amp it title */
-  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  /* -webkit-line-clamp: 2; */
   text-overflow: ellipsis;
   overflow: hidden;
 }
