@@ -112,6 +112,7 @@ function VideoId() {
         <ul className="recomended-videos-list">
           {channelVideosData.items.map((channelVideo) => {
             if (params.id === channelVideo.id.videoId) return;
+            if (channelVideo.id.kind !== "youtube#video") return;
             return (
               <VideoCard
                 key={channelVideo.id.videoId}

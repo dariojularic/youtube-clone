@@ -1,12 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import { fetchApi, buildUrl } from ".";
+import { getData } from ".";
 
 function useGetChannelData(paramsId) {
   const { data, error, isLoading } = useQuery({
     queryKey: ["channelData", paramsId],
-    // queryFn: () => fetchApi.fetchData(fetchApi.getChannelData(paramsId)),
     queryFn: () =>
-      buildUrl("channels", {
+      getData("channels", {
         part: "snippet,statistics",
         id: paramsId,
       }),
@@ -19,13 +18,12 @@ function useGetChannelData(paramsId) {
     isLoading: channelVideosIsLoading,
   } = useQuery({
     queryKey: ["channelVideos", paramsId],
-    // queryFn: () => fetchApi.fetchData(fetchApi.getChannelVideos(paramsId)),
     queryFn: () =>
-      buildUrl("search", {
+      getData("search", {
         channelId: paramsId,
         part: "snippet,id",
         order: "date",
-        maxResults: "12",
+        maxResults: "8",
       }),
     enabled: !!paramsId,
   });

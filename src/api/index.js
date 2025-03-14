@@ -38,7 +38,7 @@
 
 // funkcija buildUrl prima endpoint i query parametre
 
-export async function buildUrl(endpoint, queryParams) {
+export async function getData(endpoint, queryParams) {
   const baseUrl = "https://youtube-v31.p.rapidapi.com";
 
   const options = {
@@ -49,9 +49,7 @@ export async function buildUrl(endpoint, queryParams) {
     },
   };
 
-  const completeUrl = `${baseUrl}/${endpoint}?${new URLSearchParams(
-    queryParams
-  ).toString()}`;
+  const completeUrl = `${baseUrl}/${endpoint}?${new URLSearchParams(queryParams).toString()}`
 
   const fetchData = async () => {
     try {
@@ -63,9 +61,10 @@ export async function buildUrl(endpoint, queryParams) {
     }
   };
 
-  const data = await fetchData();
-  return data;
+    const data = await fetchData();
+    return data;
 }
+
 
 // console.log(buildUrl("commentThreads", "0Y74yXozT2I"))
 
