@@ -31,7 +31,7 @@ function NewVideos() {
       <div className="video-grid">
         {data?.items.map((video) => {
           if (!video.id.videoId && !video.id.channelId) return;
-          console.log(video)
+          // console.log(video)
           return video.id.kind === "youtube#video" ? (
             <VideoCard
               key={video.id.videoId}
