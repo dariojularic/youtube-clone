@@ -19,7 +19,7 @@ function VideoComment({
   return (
     <article className="comment-container">
       <div className="comment-img-container">
-        <img src={imgSrc} alt="avatar" onError={handleImageError} />
+        <img className="comment-avatar" src={imgSrc} alt="avatar" onError={handleImageError} />
       </div>
 
       <div className="comment-text-container">

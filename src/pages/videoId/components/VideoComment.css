@@ -27,3 +27,8 @@
 .comment-text-container {
   margin-left: 16px;
 }
+
+.comment-avatar {
+  height: 48px;
+  width: 48px;
+}
