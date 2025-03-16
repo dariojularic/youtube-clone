@@ -5,7 +5,6 @@ import Loader from "#layouts/loader/Loader";
 import { useContext } from "react";
 import { categoryContext } from "#src/CategoryContext";
 import useGetCategoryVideos from "#api/useGetCategoryVideos";
-
 import "./NewVideos.css";
 
 function NewVideos() {
@@ -31,7 +30,6 @@ function NewVideos() {
       <div className="video-grid">
         {data?.items.map((video) => {
           if (!video.id.videoId && !video.id.channelId) return;
-          // console.log(video)
           return video.id.kind === "youtube#video" ? (
             <VideoCard
               key={video.id.videoId}

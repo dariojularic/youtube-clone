@@ -1,6 +1,6 @@
 import "./ChannelCard.css";
 import { Link } from "react-router-dom";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 
 function ChannelCard({ channelTitle, thumbnails, description, id }) {
   return (

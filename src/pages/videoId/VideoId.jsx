@@ -1,8 +1,6 @@
 import "./VideoId.css";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import VideoCard from "#pages/newvideos/components/VideoCard";
-import Loader from "#layouts/loader/Loader";
-import VideoComment from "./components/VideoComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faThumbsUp,
@@ -10,9 +8,11 @@ import {
   faShareFromSquare,
   faCircleDown,
 } from "@fortawesome/free-regular-svg-icons";
+import VideoCard from "#pages/newvideos/components/VideoCard";
+import Loader from "#layouts/loader/Loader";
+import VideoComment from "./components/VideoComment";
 import useGetRecommendedVideos from "#api/useGetRecommendedVideos";
 import useGetSingleVideoData from "#api/useGetSingleVideoData";
-import { Link } from "react-router-dom";
 
 function VideoId() {
   const params = useParams();

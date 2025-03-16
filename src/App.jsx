@@ -6,7 +6,6 @@ import { categoryContext } from "./CategoryContext";
 
 const queryClient = new QueryClient();
 
-// export const categoryContext = createContext();
 function App() {
   const [activeCategory, setActiveCategory] = useState("New");
 
