@@ -23,7 +23,7 @@ function useGetChannelData(paramsId) {
         channelId: paramsId,
         part: "snippet,id",
         order: "date",
-        maxResults: "8",
+        maxResults: "24",
       }),
     enabled: !!paramsId,
   });

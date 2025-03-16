@@ -1,11 +1,11 @@
+import "./NewVideos.css";
 import VideoCard from "./components/VideoCard";
 import ChannelCard from "./components/ChannelCard";
 import Sidebar from "#layouts/sidebar/Sidebar";
 import Loader from "#layouts/loader/Loader";
+import useGetCategoryVideos from "#api/useGetCategoryVideos";
 import { useContext } from "react";
 import { categoryContext } from "#src/CategoryContext";
-import useGetCategoryVideos from "#api/useGetCategoryVideos";
-import "./NewVideos.css";
 
 function NewVideos() {
   const { activeCategory, setActiveCategory } = useContext(categoryContext);

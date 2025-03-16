@@ -21,7 +21,7 @@ function useGetSingleVideoData(paramsId) {
       getData("commentThreads", {
         part: "snippet",
         videoId: paramsId,
-        maxResults: 8,
+        maxResults: "8",
       }),
   });
 

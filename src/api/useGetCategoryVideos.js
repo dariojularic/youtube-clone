@@ -8,7 +8,7 @@ function useGetCategoryVideos(category) {
       getData("search", {
         q: category,
         part: "snippet,id",
-        maxResults: "8",
+        maxResults: "32",
         regionCode: "US",
       }),
   });

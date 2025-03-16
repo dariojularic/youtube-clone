@@ -1,6 +1,6 @@
 import "./ChannelId.css";
-import useGetChannelData from "#api/useGetChannelData";
 import { useParams } from "react-router-dom";
+import useGetChannelData from "#api/useGetChannelData";
 import Loader from "#layouts/loader/Loader";
 import VideoCard from "#pages/newvideos/components/VideoCard";
 

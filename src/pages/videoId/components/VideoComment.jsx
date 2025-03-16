@@ -1,7 +1,7 @@
 import "./VideoComment.css";
 import { formatDistanceToNow } from "date-fns";
-import PropTypes from "prop-types";
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function VideoComment({
   authorDisplayName,
@@ -21,7 +21,6 @@ function VideoComment({
         <img
           className="comment-avatar"
           src={imgSrc}
-          alt="avatar"
           onError={handleImageError}
         />
       </div>

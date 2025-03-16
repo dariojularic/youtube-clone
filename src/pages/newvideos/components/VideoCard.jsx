@@ -8,7 +8,7 @@ function VideoCard({ title, thumbnails, publishedAt, channelTitle, id }) {
     <Link className="video-card-link link" to={`/video/${id}`}>
       <div className="video-card-container">
         <div className="image-container">
-          <img src={thumbnails.medium.url} className="video-card-img" alt="" />
+          <img src={thumbnails.medium.url} className="video-card-img" />
         </div>
 
         <div className="video-card-info-container">

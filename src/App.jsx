@@ -1,6 +1,6 @@
 import "./App.css";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import SharedLayout from "./layouts/SharedLayout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { useState } from "react";
 import { categoryContext } from "./CategoryContext";
 
