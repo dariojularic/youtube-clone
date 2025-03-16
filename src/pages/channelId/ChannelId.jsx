@@ -23,7 +23,7 @@ function ChannelId() {
   if (isLoading || channelVideosIsLoading) return <Loader />;
 
   const snippet = data.items[0].snippet;
-  const imageUrl = data.items[0].brandingSettings.image.bannerExternalUrl;
+  const imageUrl = data.items[0].brandingSettings?.image?.bannerExternalUrl;
 
   return (
     <div className="channel-id-container">
@@ -39,6 +39,7 @@ function ChannelId() {
         </h3>
         <div className="video-grid">
           {channelVideosData.items.map((video) => {
+            if (!video.id.videoId) return
             return (
               <VideoCard
                 key={video.id.videoId}
