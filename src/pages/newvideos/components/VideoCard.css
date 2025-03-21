@@ -9,7 +9,7 @@
   box-sizing: border-box;
 }
 
-.card-title {
+/* .card-title {
   color: whitesmoke;
   margin: 4px 0;
   font-size: 20px;
@@ -19,7 +19,7 @@
   -webkit-line-clamp: 2;
   text-overflow: ellipsis;
   overflow: hidden;
-}
+} */
 
 .card-channel {
   color: rgb(180, 180, 180);
